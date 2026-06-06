@@ -1,0 +1,11 @@
+APP_NAME=shift_test_task
+HOST_PORT=8899
+DB_NAME=postgres
+DB_USER=user
+DB_HOST=APP_NAME_db
+DB_PORT=5432
+DB_PASS=password
+DATABASE_ECHO=1
+DEBUG=1
+SECRET_KEY=change-me-in-production
+ACCESS_TOKEN_EXPIRE_MINUTES=60
