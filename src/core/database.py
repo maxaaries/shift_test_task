@@ -6,8 +6,11 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
 from src.core.config import settings
+from src.models.base import Base
+from src.models import booking, room, time_slot, user  # noqa: F401
 
 __all__ = (
+    "Base",
     "get_session",
     "init_db",
     "close_db",
@@ -30,9 +33,9 @@ AsyncSessionLocal = sessionmaker(
 
 
 async def init_db() -> None:
-    """Проверка подключения к базе данных."""
+    """Создание таблиц при старте приложения."""
     async with engine_async.begin() as conn:
-        await conn.run_sync(lambda _: None)
+        await conn.run_sync(Base.metadata.create_all)
 
 
 async def close_db() -> None:
