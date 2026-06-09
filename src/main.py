@@ -5,6 +5,8 @@ from fastapi import FastAPI
 from src.core.config import settings
 from src.core.database import close_db, init_db
 from src.routers.auth import auth_router
+from src.routers.bookings import bookings_router
+from src.routers.rooms import rooms_router
 from src.routers.system import system_router
 
 
@@ -23,3 +25,5 @@ app = FastAPI(
 
 app.include_router(system_router)
 app.include_router(auth_router)
+app.include_router(rooms_router)
+app.include_router(bookings_router)
