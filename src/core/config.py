@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "change-me-in-production"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
+    ADMIN_EMAIL: str = "admin@example.com"
+    ADMIN_PASSWORD: str = "admin"
+    ADMIN_FULL_NAME: str = "Администратор"
+
     @property
     def database_echo(self) -> bool:
         return self.DATABASE_ECHO

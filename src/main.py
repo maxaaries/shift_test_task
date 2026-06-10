@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from src.core.config import settings
 from src.core.database import close_db, init_db
+from src.core.seed import seed_initial_data
 from src.routers.auth import auth_router
 from src.routers.bookings import bookings_router
 from src.routers.rooms import rooms_router
@@ -13,6 +14,7 @@ from src.routers.system import system_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
+    await seed_initial_data()
     yield
     await close_db()
 
