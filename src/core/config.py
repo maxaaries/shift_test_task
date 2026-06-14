@@ -39,9 +39,5 @@ class Settings(BaseSettings):
             f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
         )
 
-    @property
-    def sync_database_url(self) -> str:
-        return self.async_database_url
-
 
 settings = Settings()

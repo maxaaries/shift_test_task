@@ -8,12 +8,15 @@
 cp .env.example .env
 ```
 
+В `.env` для локального запуска: `DB_HOST=localhost`.  
+При `docker compose up` хост БД подставляется автоматически.
+
 ### Локально
 
 ```bash
 poetry install
 docker compose up db -d
-poetry run uvicorn src.main:app --host 0.0.0.0 --port 8000
+poetry run uvicorn src.main:app --host 0.0.0.0 --port 8899
 ```
 
 ### Docker
@@ -22,15 +25,15 @@ poetry run uvicorn src.main:app --host 0.0.0.0 --port 8000
 docker compose up --build
 ```
 
-Или только приложение (нужен запущенный PostgreSQL):
+Или только приложение (нужен запущенный PostgreSQL с `DB_HOST=localhost` в `.env`):
 
 ```bash
 docker build -t shift_test_task .
 docker run --env-file .env -p 8899:8000 shift_test_task
 ```
 
-Приложение: http://localhost:8899  
-Документация API: http://localhost:8899/docs
+Приложение: [http://localhost:8899](http://localhost:8899)  
+Документация API: [http://localhost:8899/docs](http://localhost:8899/docs)
 
 Администратор по умолчанию: `admin@example.com` / `admin`
 
@@ -67,3 +70,4 @@ curl -X DELETE -H "Authorization: Bearer $TOKEN" \
 ```
 
 ## Тестовое задание выполнила Александра Миних
+
